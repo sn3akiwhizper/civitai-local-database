@@ -1,0 +1,43 @@
+{
+    "name": "Python 3",
+    // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+    "image": "mcr.microsoft.com/devcontainers/python:0-3.10",
+    "features": {
+        "ghcr.io/devcontainers-contrib/features/black:1": {},
+        "ghcr.io/devcontainers-contrib/features/flake8:1": {},
+        "ghcr.io/devcontainers-contrib/features/pylint:1": {},
+        "ghcr.io/warrenbuckley/codespace-features/sqlite:1": {}
+    },
+
+    // Features to add to the dev container. More info: https://containers.dev/features.
+    // "features": {},
+
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    // "forwardPorts": [],
+
+    // Use 'postCreateCommand' to run commands after the container is created.
+    "postCreateCommand": "pip install --user -r requirements.txt",
+    // "postCreateCommand": "poetry install",
+
+    // Configure tool-specific properties.
+    "customizations": {
+        // Configure properties specific to VS Code.
+        "vscode": {
+            // Set *default* container specific settings.json values on container create.
+            "settings": {
+                "python.defaultInterpreterPath": "/usr/local/bin/python",
+                "editor.formatOnSave": true,
+                "python.formatting.provider": "black",
+                "python.formatting.blackPath": "/usr/local/bin/black",
+                "python.linting.pylintEnabled": true,
+                "python.linting.enabled": true,
+            },
+            // Add the IDs of extensions you want installed when the container is created.
+            "extensions": [
+				"ms-python.python",
+				"ms-python.vscode-pylance",
+				"njpwerner.autodocstring"
+			]
+        }
+    }
+}
